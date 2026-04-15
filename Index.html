@@ -1,11 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>FGU-Quiz-App</title>
     <link rel="stylesheet" href="Assets/Css/Style.css" />
     <script src="Assets/JS/index.js" type="module"></script>
   </head>
-  <body></body>
+  <body>
+    <main class="app">
+      <section class="screen screen--start" id="start-screen">
+        <div class="card">
+          <h1 class="app__title">Quiz App</h1>
+          <p class="app__subtitle">Choose difficulty</p>
+
+          <div class="difficulty-picker">
+            <button class="difficulty-picker__button" type="button" data-difficulty="easy">Easy</button>
+            <button class="difficulty-picker__button" type="button" data-difficulty="medium">Medium</button>
+            <button class="difficulty-picker__button" type="button" data-difficulty="hard">Hard</button>
+          </div>
+
+          <button class="app__action" type="button" id="start-quiz">Start Quiz</button>
+        </div>
+      </section>
+
+      <section class="screen screen--quiz" id="quiz-screen" hidden>
+        <div class="card">
+          <div class="quiz-progress">
+            <span id="question-counter">Question 1 of 5</span>
+          </div>
+
+          <h2 class="quiz-question" id="question-title">What does HTML stand for?</h2>
+
+          <div class="answer-list" id="answer-list">
+            <button class="answer-list__option" type="button">A) Hyper Text Markup Language</button>
+            <button class="answer-list__option" type="button">B) High Tech Modern Language</button>
+            <button class="answer-list__option" type="button">C) Home Tool Markup Language</button>
+            <button class="answer-list__option" type="button">D) Hyperlink Text Machine Language</button>
+          </div>
+
+          <button class="app__action" type="button" id="next-question">Next Question</button>
+        </div>
+      </section>
+
+      <section class="screen screen--result" id="result-screen" hidden>
+        <div class="card">
+          <h2 class="result__title">Quiz Finished!</h2>
+          <p class="result__score" id="final-score">3 / 5</p>
+          <button class="app__action" type="button" id="restart-quiz">Try Again</button>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
