@@ -1,17 +1,26 @@
 import { getSelectedDifficulty } from "./difficulty.js";
+import { showCurrentQuestion, startQuestionRound } from "./questions.js";
+import { showScreen } from "./screen.js";
 
 export function initStartQuiz() {
-  const startScreen = document.querySelector("#start-screen");
-  const quizScreen = document.querySelector("#quiz-screen");
   const startButton = document.querySelector("#start-quiz");
 
-  startButton.addEventListener("click", function () {
-    if (!getSelectedDifficulty()) {
+  startButton.addEventListener("click", async function () {
+    const selectedDifficulty = getSelectedDifficulty();
+
+    if (!selectedDifficulty) {
       alert("Choose a difficulty first");
       return;
     }
 
-    startScreen.hidden = true;
-    quizScreen.hidden = false;
+    const questions = await startQuestionRound(selectedDifficulty);
+
+    if (questions.length === 0) {
+      alert("No questions found for this difficulty");
+      return;
+    }
+
+    showCurrentQuestion();
+    showScreen("quiz-screen");
   });
 }
